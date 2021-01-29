@@ -1,0 +1,33 @@
+<p class="title">Add New Card</p>
+<form class="cards-form" [formGroup]="cardForms" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center">
+  <mat-form-field>
+    <input matInput formControlName="cardNumber" placeholder="Card Number" required>
+    <mat-error>Card Number is <strong>required</strong></mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="cardHolder" placeholder="Card Holder Name" required>
+    <mat-error>Card Holder Name is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="securityCode" placeholder="Security Code (Optional)">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="amount" placeholder="Amount" required>
+    <mat-error>Amount is <strong>required</strong> and must be > <strong>0</strong></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Expiry Date</mat-label>
+    <input matInput formControlName="expirationDate" [matDatepicker]="picker" [min]="toDateMinValue">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>Expiry Date is <strong>required</strong></mat-error>
+  </mat-form-field>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="55px">
+    <button type="submit" mat-raised-button color="primary" [disabled]="!cardForms.valid" class="form-button" >Add</button>
+    <button mat-raised-button class="form-button" routerLink="/">Cancel</button>
+  </div>
+</form>

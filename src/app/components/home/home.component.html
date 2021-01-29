@@ -1,0 +1,43 @@
+<div class="mat-elevation-z8" frame="box" fxLayout="row wrap">
+<ng-container *ngIf="(isLoaded$ | async)===true">
+    <table mat-table [dataSource]="dataSource" frame="box" name="card-table-list"
+          summary="Card List">
+
+      <ng-container matColumnDef="sno">
+        <th mat-header-cell *matHeaderCellDef id="sno"> S.No.</th>
+        <td mat-cell
+            *matCellDef="let element; let i=index"> {{i}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="cardNumber">
+        <th mat-header-cell *matHeaderCellDef id="cardNumber"> Card Number</th>
+        <td mat-cell *matCellDef="let element"> {{element.cardNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cardHolder">
+        <th mat-header-cell *matHeaderCellDef id="cardHolder"> Card Holder</th>
+        <td mat-cell *matCellDef="let element"> {{element.cardHolder}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expirationDate">
+        <th mat-header-cell *matHeaderCellDef id="expirationDate"> Expiry Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.expirationDate | date}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="securityCode">
+        <th mat-header-cell *matHeaderCellDef id="securityCode"> Security Code</th>
+        <td mat-cell *matCellDef="let element"> {{element.securityCode}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef id="amount"> Amount</th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-container>
+</div>
+<button mat-raised-button color="primary" class="addButton" routerLink="/add">Add Card</button>

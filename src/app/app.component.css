@@ -1,0 +1,12 @@
+.content {
+    margin: 2%;
+}
+
+.toolbar-content {
+    background-color: lightblue;
+    height: 13vh;
+    min-height: 10px;
+    max-height: 40px;
+    z-index: 999;
+    margin-bottom: 0.25vh;
+  }
